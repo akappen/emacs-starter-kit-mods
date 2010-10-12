@@ -37,6 +37,9 @@
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-O") 'delete-other-windows)
 
+;; starter kit has C-M-h as backward-kill-word, also remap C-h
+(global-set-key (kbd "C-h") 'backward-delete-char-untabify)
+
 ;; fullscreen toggle
 (defun fullscreen-toggle ()
   (interactive)
