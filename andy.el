@@ -4,9 +4,9 @@
 ;; Linux/X11 settings:
 ;;   font, frame size
 (if (eq window-system 'x)
-    (progn (set-default-font "Consolas-11")
+    (progn (set-default-font "Inconsolata-11")
            (add-to-list 'default-frame-alist '(width . 132))
-           (add-to-list 'default-frame-alist '(height . 66))))
+           (add-to-list 'default-frame-alist '(height . 70))))
   
 ;; NextStep/Mac OSX settings:
 ;;   modifier keys, font, frame size
