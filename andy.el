@@ -1,12 +1,9 @@
-;; use zenburn color theme
-(zenburn)
-
 ;; Linux/X11 settings:
 ;;   font, frame size
 (if (eq window-system 'x)
-    (progn (set-default-font "Inconsolata-11")
-           (add-to-list 'default-frame-alist '(width . 132))
-           (add-to-list 'default-frame-alist '(height . 70))))
+    (progn (set-default-font "Inconsolata-12")
+           (add-to-list 'default-frame-alist '(width . 100))
+           (add-to-list 'default-frame-alist '(height . 62))))
   
 ;; NextStep/Mac OSX settings:
 ;;   modifier keys, font, frame size
@@ -19,6 +16,9 @@
            (setenv "PATH" (concat (getenv "PATH") ":/usr/local/git/bin"))
            (setq exec-path (append exec-path '("/usr/local/git/bin")))))
 
+
+;; use zenburn color theme
+(zenburn)
 
 ;; add my ruby rspec and test::unit support and keys
 (require 'rspec-mode)
