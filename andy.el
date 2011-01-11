@@ -17,8 +17,8 @@
            (setq exec-path (append exec-path '("/usr/local/git/bin")))))
 
 
-;; use zenburn color theme
-(zenburn)
+;; use twilight color theme
+(color-theme-twilight)
 
 ;; add my ruby rspec and test::unit support and keys
 (require 'rspec-mode)
@@ -49,3 +49,41 @@
 ;; grep-find ignores bundle dir
 (grep-compute-defaults)
 (add-to-list 'grep-find-ignored-directories "vendor/bundle")
+
+;; Only auto-fill comment blocks in non-text modes
+(setq comment-auto-fill-only-comments t)
+
+;; Add buffer or associated filename to window frame
+(setq frame-title-format
+      '("" invocation-name ": "(:eval (if (buffer-file-name)
+                                          (abbreviate-file-name (buffer-file-name))
+                                        "%b"))))
+
+;; auto-complete-mode
+(add-to-list 'load-path "/home/andy/.emacs.d/andy/ac-mode")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/andy/.emacs.d/andy/ac-mode/ac-dict")
+(ac-config-default)
+
+;; load my ELPA packages
+(defvar andy-packages (list 'rinari)
+  "Libraries that should be installed for andy.")
+
+(defun andy-elpa-install ()
+  "Install all andy's packages that aren't installed."
+  (interactive)
+  (dolist (package andy-packages)
+    (unless (or (member package package-activated-list)
+                (functionp package))
+      (message "Installing %s" (symbol-name package))
+      (package-install package))))
+
+(andy-elpa-install)
+
+
+;; rhtml mode
+(add-to-list 'load-path "/home/andy/.emacs.d/andy/rhtml")
+(require 'rhtml-mode)
+
+;; extra snippets
+(yas/load-directory "/home/andy/.emacs.d/andy/yasnippets")
