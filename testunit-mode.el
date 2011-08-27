@@ -28,8 +28,9 @@
   "^[ \\t]*def[ \\t]+\\(test[_a-z0-9]*\\)")
 
 (defun testunit-example-at-point ()
-  (if (re-search-backward testunit-testcase-re nil t)
-      (match-string 1)))
+  (save-excursion
+    (if (re-search-backward testunit-testcase-re nil t)
+        (match-string 1))))
 
 (require 'linkify)
 (defun do-run-testunit (&rest args)
