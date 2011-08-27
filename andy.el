@@ -4,7 +4,7 @@
     (progn (set-default-font "Inconsolata-12")
            (add-to-list 'default-frame-alist '(width . 100))
            (add-to-list 'default-frame-alist '(height . 62))))
-  
+
 ;; NextStep/Mac OSX settings:
 ;;   modifier keys, font, frame size
 (if (eq window-system 'ns)
@@ -19,15 +19,6 @@
 
 ;; use twilight color theme
 (color-theme-twilight)
-
-;; add my ruby rspec and test::unit support and keys
-(require 'rspec-mode)
-
-(require 'testunit-mode)
-(add-hook 'testunit-mode-hook
-	  (lambda ()
-	    (define-key testunit-mode-map (kbd "M-s") 'run-focused-test)
-	    (define-key testunit-mode-map (kbd "M-S") 'run-tests)))
 
 ;; use browse-kill-ring on raw M-y if available, uses browse-kill-ring-mode
 (when (require 'browse-kill-ring nil 'noerror)
