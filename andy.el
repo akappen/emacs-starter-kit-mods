@@ -53,14 +53,41 @@
                                           (abbreviate-file-name (buffer-file-name))
                                         "%b"))))
 
+;; delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; diasable all automagic window splitting
+;;(setq pop-up-windows nil)
+
 ;; auto-complete-mode
-(add-to-list 'load-path "/home/andy/.emacs.d/andy/ac-mode")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/home/andy/.emacs.d/andy/ac-mode/ac-dict")
-(ac-config-default)
+;;(add-to-list 'load-path "/home/andy/.emacs.d/andy/ac-mode")
+;;(require 'auto-complete-config)
+;;(add-to-list 'ac-dictionary-directories "/home/andy/.emacs.d/andy/ac-mode/ac-dict")
+;;(ac-config-default)
+;;(add-to-list 'ac-modes 'rhtml-mode)
+
+;; configure org-mode
+(setq org-directory "~/org")
+(setq org-agenda-files
+      (quote
+       ("~/org/self.org" "~/org/home.org" "~/org/trading.org" "~/org/richarddawkins-net.org" "~/org/net_promoter_score.org" "~/org/biotestlabs.org" "~/org/comics-app.org" "~/org/writing.org")))
+(setq org-agenda-clockreport-parameter-plist (quote (:fileskip0 t)))
+(setq org-refile-targets '((org-agenda-files . (:maxlevel . 1))))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-remember-default-headline "Notes")
+(org-remember-insinuate)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cr" 'org-remember)
+
+;; Rinari
+(add-to-list 'load-path "~/.emacs.d/andy/rinari")
+(require 'rinari)
+(require 'ruby-compilation-rspec)
+(setenv "RUBYLIB" "spec")
 
 ;; load my ELPA packages
-(defvar andy-packages (list 'rinari)
+(defvar andy-packages (list 'haml-mode 'sass-mode 'ruby-electric 'textmate 'ecb_snap)
   "Libraries that should be installed for andy.")
 
 (defun andy-elpa-install ()
@@ -74,6 +101,17 @@
 
 (andy-elpa-install)
 
+;; ECB settings
+(setq stack-trace-on-error nil)
+(setq ecb-windows-width 32)
+(setq ecb-fix-window-size 'auto)
+(setq ecb-tip-of-the-day nil)
+(setq ecb-layout-name "left7")
+(setq ecb-source-path (list (getenv "PWD")))
+(setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
+(eval-after-load 'ecb
+  '(progn
+     (set-face-background 'ecb-default-highlight-face "dim gray")))
 
 ;; rhtml mode
 (add-to-list 'load-path "/home/andy/.emacs.d/andy/rhtml")
