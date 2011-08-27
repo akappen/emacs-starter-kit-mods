@@ -37,9 +37,12 @@
   (set-frame-parameter nil 'fullscreen
   (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
-;; grep-find ignores bundle dir
+;; grep-find ignores
 (grep-compute-defaults)
-(add-to-list 'grep-find-ignored-directories "vendor/bundle")
+(add-to-list 'grep-find-ignored-directories "vendor")
+(add-to-list 'grep-find-ignored-directories "log")
+(add-to-list 'grep-find-ignored-directories "tmp")
+(add-to-list 'grep-find-ignored-files "*.dump")
 
 ;; Only auto-fill comment blocks in non-text modes
 (setq comment-auto-fill-only-comments t)
