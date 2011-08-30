@@ -60,9 +60,9 @@
 ;;(setq pop-up-windows nil)
 
 ;; auto-complete-mode
-;;(add-to-list 'load-path "/home/andy/.emacs.d/andy/ac-mode")
+;;(add-to-list 'load-path "~/.emacs.d/andy/ac-mode")
 ;;(require 'auto-complete-config)
-;;(add-to-list 'ac-dictionary-directories "/home/andy/.emacs.d/andy/ac-mode/ac-dict")
+;;(add-to-list 'ac-dictionary-directories "~/.emacs.d/andy/ac-mode/ac-dict")
 ;;(ac-config-default)
 ;;(add-to-list 'ac-modes 'rhtml-mode)
 
@@ -114,8 +114,8 @@
      (set-face-background 'ecb-default-highlight-face "dim gray")))
 
 ;; rhtml mode
-(add-to-list 'load-path "/home/andy/.emacs.d/andy/rhtml")
+(add-to-list 'load-path "~/.emacs.d/andy/rhtml")
 (require 'rhtml-mode)
 
 ;; extra snippets
-(yas/load-directory "/home/andy/.emacs.d/andy/yasnippets")
+(yas/load-directory "~/.emacs.d/andy/yasnippets")
