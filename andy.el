@@ -102,7 +102,7 @@
 (andy-elpa-install)
 
 ;; ECB settings
-(setq ecb-options-version "2.40")
+(custom-set-variables '(ecb-options-version "2.40"))
 (setq stack-trace-on-error nil)
 (setq ecb-windows-width 32)
 (setq ecb-fix-window-size 'auto)
