@@ -18,7 +18,15 @@
 
 
 ;; use twilight color theme
-(color-theme-twilight)
+;;(color-theme-twilight)
+
+;; use solaized theme
+(load "color-theme-solarized.el")
+(color-theme-solarized-dark)
+
+;; use tangotango theme
+;;(load "color-theme-tangotango.el")
+;;(color-theme-tangotango)
 
 ;; use browse-kill-ring on raw M-y if available, uses browse-kill-ring-mode
 (when (require 'browse-kill-ring nil 'noerror)
@@ -30,6 +38,9 @@
 
 ;; starter kit has C-M-h as backward-kill-word, also remap C-h
 (global-set-key (kbd "C-h") 'backward-delete-char-untabify)
+
+;; ido mode
+(setq ido-use-virtual-buffers t) ; C-x b suggests recently closed buffers
 
 ;; fullscreen toggle
 (defun fullscreen-toggle ()
@@ -55,6 +66,9 @@
 
 ;; delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; allow scroll-down/up-command to move point to buffer end/beginning
+(setq scroll-error-top-bottom 'true)
 
 ;; diasable all automagic window splitting
 ;;(setq pop-up-windows nil)
@@ -87,7 +101,7 @@
 (setenv "RUBYLIB" "spec")
 
 ;; load my ELPA packages
-(defvar andy-packages (list 'haml-mode 'sass-mode 'ruby-electric 'textmate 'ecb_snap)
+(defvar andy-packages (list 'haml-mode 'sass-mode 'coffee-mode 'ruby-electric 'textmate 'ecb_snap 'browse-kill-ring)
   "Libraries that should be installed for andy.")
 
 (defun andy-elpa-install ()
@@ -108,8 +122,10 @@
 (setq ecb-fix-window-size 'auto)
 (setq ecb-tip-of-the-day nil)
 (setq ecb-layout-name "left7")
+(setq ecb-compile-window-height 12)
 (setq ecb-source-path (list (getenv "PWD")))
 (setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
+(setq ecb-tree-make-parent-node-sticky nil)
 (eval-after-load 'ecb
   '(progn
      (set-face-background 'ecb-default-highlight-face "dim gray")))
@@ -120,3 +136,11 @@
 
 ;; extra snippets
 (yas/load-directory "~/.emacs.d/andy/yasnippets")
+
+;; coffeescript mode
+(defun coffee-custom ()
+  "coffee-mode-hook"
+  (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+          '(lambda() (coffee-custom)))
