@@ -21,8 +21,11 @@
 ;;(color-theme-twilight)
 
 ;; use solaized theme
-(load "color-theme-solarized.el")
-(color-theme-solarized-dark)
+;; (load "color-theme-solarized.el")
+;; (color-theme-solarized-dark)
+
+;; use zenburn theme
+(color-theme-zenburn)
 
 ;; use tangotango theme
 ;;(load "color-theme-tangotango.el")
@@ -32,9 +35,8 @@
 (when (require 'browse-kill-ring nil 'noerror)
   (browse-kill-ring-default-keybindings))
 
-;; remap other-window to M-o, delete-other-windows to M-O
+;; remap other-window to M-o
 (global-set-key (kbd "M-o") 'other-window)
-(global-set-key (kbd "M-O") 'delete-other-windows)
 
 ;; starter kit has C-M-h as backward-kill-word, also remap C-h
 (global-set-key (kbd "C-h") 'backward-delete-char-untabify)
